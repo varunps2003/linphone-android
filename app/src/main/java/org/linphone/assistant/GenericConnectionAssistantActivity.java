@@ -24,6 +24,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -38,6 +39,7 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
     private TextView mLogin;
     private EditText mUsername, mPassword, mDomain, mDisplayName;
     private RadioGroup mTransport;
+    private LinearLayout mTopBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +66,12 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
         mDomain = findViewById(R.id.assistant_domain);
         mDomain.addTextChangedListener(this);
         mTransport = findViewById(R.id.assistant_transports);
+        mTopBar = findViewById(R.id.top_bar);
+    }
+
+    protected void onResume() {
+        super.onResume();
+        mTopBar.setVisibility(View.GONE);
     }
 
     private void configureAccount() {
