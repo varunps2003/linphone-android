@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -32,6 +33,7 @@ import org.linphone.LinphoneManager;
 import org.linphone.R;
 import org.linphone.core.AccountCreator;
 import org.linphone.core.Core;
+import org.linphone.core.ProxyConfig;
 import org.linphone.core.TransportType;
 import org.linphone.core.tools.Log;
 
@@ -40,13 +42,21 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
     private EditText mUsername, mPassword, mDomain, mDisplayName;
     private RadioGroup mTransport;
     private LinearLayout mTopBar;
+    private Button btnLogin;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.assistant_generic_connection);
-
+        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        configureAccount();
+                    }
+                });
         mLogin = findViewById(R.id.assistant_login);
         mLogin.setEnabled(false);
         mLogin.setOnClickListener(
@@ -72,6 +82,9 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
     protected void onResume() {
         super.onResume();
         mTopBar.setVisibility(View.GONE);
+        mDisplayName.setVisibility(View.GONE);
+        mDomain.setVisibility(View.GONE);
+        mTransport.setVisibility(View.GONE);
     }
 
     private void configureAccount() {
@@ -83,11 +96,12 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
 
         AccountCreator accountCreator = getAccountCreator();
         accountCreator.setUsername(mUsername.getText().toString());
-        accountCreator.setDomain(mDomain.getText().toString());
+        accountCreator.setDomain("3.236.45.4");
         accountCreator.setPassword(mPassword.getText().toString());
-        accountCreator.setDisplayName(mDisplayName.getText().toString());
+        // accountCreator.setDisplayName(mDisplayName.getText().toString());
+        accountCreator.setTransport(TransportType.Tcp);
 
-        switch (mTransport.getCheckedRadioButtonId()) {
+        /*switch (mTransport.getCheckedRadioButtonId()) {
             case R.id.transport_udp:
                 accountCreator.setTransport(TransportType.Udp);
                 break;
@@ -97,7 +111,46 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
             case R.id.transport_tls:
                 accountCreator.setTransport(TransportType.Tls);
                 break;
+        }*/
+
+        ProxyConfig config = core.createProxyConfig();
+
+        /*Address addr = core.createAddress(null);
+        if (addr == null) {
+            Log.i("Error creating the Address");
+            return;
         }
+
+        addr.setUsername(mUsername.getText().toString());
+        addr.setPort(5060);
+        addr.setDomain("3.236.45.4");
+        // addr.setPassword(password);
+        // addr.setDisplayName(mUsername.getText().toString());
+        addr.setTransport(TransportType.Tcp);
+        config.setIdentityAddress(addr);
+
+        String[] str = {"3.236.45.4;transport=tcp"};
+        config.setRoutes(str);
+        config.setServerAddr("sbc.biznessdial.com;transport=tcp");
+
+        /* AuthInfo infoAuth =
+        Factory.instance()
+                .createAuthInfo(
+                        mUsername.getText().toString(),
+                        mUsername.getText().toString(),
+                        mPassword.getText().toString(),
+                        null,
+                        "3.236.45.4",
+                        "3.236.45.4");*/
+
+        /*config.enablePublish(false);
+        config.enableRegister(true);
+
+        if (config != null /*&& infoAuth != null) {
+            // core.addAuthInfo(infoAuth);
+            //core.addProxyConfig(config);
+            // core.setDefaultProxyConfig(config);
+        }*/
 
         createProxyConfigAndLeaveAssistant(true);
     }
