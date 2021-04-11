@@ -7,10 +7,10 @@
     <entry name="quality_reporting_collector" overwrite="true"></entry>
     <entry name="quality_reporting_enabled" overwrite="true">0</entry>
     <entry name="quality_reporting_interval" overwrite="true">0</entry>
-    <entry name="reg_expires" overwrite="true">3600</entry>
+    <entry name="reg_expires" overwrite="true">30</entry>
     <entry name="reg_identity" overwrite="true">sip:?@switch.biznessdial.com</entry>
-    <entry name="reg_proxy" overwrite="true">&lt;sip:sbc.biznessdial.com;transport=tcp&gt;</entry>
-    <entry name="reg_route" overwrite="true">&lt;sip:switch.biznessdial.com;transport=tcp&gt;</entry>
+    <entry name="reg_proxy" overwrite="true">&lt;sip:sbc.biznessdial.com;transport=udp&gt;</entry>
+    <entry name="reg_route" overwrite="true">&lt;sip:sbc.biznessdial.com;transport=udp&gt;</entry>
     <entry name="reg_sendregister" overwrite="true">1</entry>
     <entry name="nat_policy_ref" overwrite="true"></entry>
     <entry name="realm" overwrite="true">switch.biznessdial.com</entry>

@@ -100,7 +100,7 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
         accountCreator.setDomain("switch.biznessdial.com");
         accountCreator.setPassword(mPassword.getText().toString());
         // accountCreator.setDisplayName(mDisplayName.getText().toString());
-        accountCreator.setTransport(TransportType.Tcp);
+        accountCreator.setTransport(TransportType.Udp);
 
         /*switch (mTransport.getCheckedRadioButtonId()) {
             case R.id.transport_udp:

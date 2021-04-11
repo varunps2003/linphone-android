@@ -106,6 +106,8 @@ public abstract class MainActivity extends LinphoneGenericActivity
     private CoreListenerStub mListener;
     private AccountCreatorListenerStub mAccountCreatorListener;
 
+    private ProxyConfig mProxyConfig;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -348,6 +350,26 @@ public abstract class MainActivity extends LinphoneGenericActivity
             displayMissedCalls();
         }
         enablecustomsettings();
+        // resetconfigurations();
+    }
+
+    private void resetconfigurations() {
+        Core core = LinphoneManager.getCore();
+        ProxyConfig[] proxyConfigs = core.getProxyConfigList();
+        if (proxyConfigs.length > 0) {
+            mProxyConfig = proxyConfigs[0];
+            core.setDefaultProxyConfig(proxyConfigs[0]);
+        } else {
+            Log.e("[Account Settings] Proxy config not found !");
+        }
+
+        // Set a new default proxy config if the current one has been removed
+        /*if (core != null && core.getDefaultProxyConfig() == null) {
+            ProxyConfig[] proxyConfigs = core.getProxyConfigList();
+            if (proxyConfigs.length > 0) {
+                core.setDefaultProxyConfig(proxyConfigs[0]);
+            }
+        }*/
     }
 
     private void enablecustomsettings() {
