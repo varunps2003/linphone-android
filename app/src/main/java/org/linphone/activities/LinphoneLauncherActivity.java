@@ -26,7 +26,7 @@ import android.os.Bundle;
 import android.util.Log;
 import org.linphone.LinphoneManager;
 import org.linphone.R;
-import org.linphone.assistant.GenericConnectionAssistantActivity;
+import org.linphone.assistant.MenuAssistantActivity;
 import org.linphone.chat.ChatActivity;
 import org.linphone.contacts.ContactsActivity;
 import org.linphone.dialer.DialerActivity;
@@ -76,7 +76,7 @@ public class LinphoneLauncherActivity extends Activity implements ServiceWaitThr
         boolean useFirstLoginActivity =
                 getResources().getBoolean(R.bool.display_account_assistant_at_first_start);
         if (useFirstLoginActivity && LinphonePreferences.instance().isFirstLaunch()) {
-            classToStart = GenericConnectionAssistantActivity.class;
+            classToStart = MenuAssistantActivity.class;
         } else {
             if (getIntent().getExtras() != null) {
                 String activity = getIntent().getExtras().getString("Activity", null);

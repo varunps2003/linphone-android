@@ -66,6 +66,7 @@ import org.linphone.core.ChatMessage;
 import org.linphone.core.ChatRoom;
 import org.linphone.core.Core;
 import org.linphone.core.CoreListenerStub;
+import org.linphone.core.PayloadType;
 import org.linphone.core.ProxyConfig;
 import org.linphone.core.RegistrationState;
 import org.linphone.core.tools.Log;
@@ -346,6 +347,34 @@ public abstract class MainActivity extends LinphoneGenericActivity
             displayMissedChats();
             displayMissedCalls();
         }
+        enablecustomsettings();
+    }
+
+    private void enablecustomsettings() {
+        Core core = LinphoneManager.getCore();
+        if (core != null) {
+            for (final PayloadType pt : core.getVideoPayloadTypes()) {
+                String str = pt.getMimeType();
+
+                if (str.equals("VP8")) {
+                    // Never use codec.setChecked(pt.enabled) !
+                    pt.enable(true);
+                } else {
+                    pt.enable(false);
+                }
+            }
+            for (final PayloadType pt : core.getAudioPayloadTypes()) {
+                String str = pt.getMimeType();
+
+                if (str.equals("G729") || str.equals("PCMU") || str.equals("G722")) {
+                    // Never use codec.setChecked(pt.enabled) !
+                    pt.enable(true);
+                } else {
+                    pt.enable(false);
+                }
+            }
+        }
+        LinphonePreferences.instance().setAutomaticallyAcceptVideoRequests(true);
     }
 
     @Override

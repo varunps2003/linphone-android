@@ -33,12 +33,10 @@ import org.linphone.LinphoneManager;
 import org.linphone.R;
 import org.linphone.activities.LinphoneGenericActivity;
 import org.linphone.core.AccountCreator;
-import org.linphone.core.Address;
 import org.linphone.core.Core;
 import org.linphone.core.DialPlan;
 import org.linphone.core.Factory;
 import org.linphone.core.ProxyConfig;
-import org.linphone.core.TransportType;
 import org.linphone.core.tools.Log;
 import org.linphone.dialer.DialerActivity;
 import org.linphone.settings.LinphonePreferences;
@@ -146,23 +144,6 @@ public abstract class AssistantActivity extends LinphoneGenericActivity
         }
 
         ProxyConfig proxyConfig = getAccountCreator().createProxyConfig();
-        Address addr = core.createAddress(null);
-        if (addr == null) {
-            Log.i("Error creating the Address");
-            return;
-        }
-
-        addr.setUsername("10001");
-        addr.setPort(5060);
-        addr.setDomain("3.236.45.4");
-        // addr.setPassword(password);
-        // addr.setDisplayName(mUsername.getText().toString());
-        addr.setTransport(TransportType.Tcp);
-        proxyConfig.setIdentityAddress(addr);
-
-        String[] str = {"3.236.45.4;transport=tcp"};
-        proxyConfig.setRoutes(str);
-        proxyConfig.setServerAddr("sbc.biznessdial.com;transport=tcp");
 
         if (isGenericAccount) {
             if (useLinphoneDefaultValues) {
@@ -192,7 +173,7 @@ public abstract class AssistantActivity extends LinphoneGenericActivity
             if (proxyConfig.getDialPrefix() == null) {
                 DialPlan dialPlan = getDialPlanForCurrentCountry();
                 if (dialPlan != null) {
-                    proxyConfig.setDialPrefix(dialPlan.getCountryCallingCode());
+                    // proxyConfig.setDialPrefix(dialPlan.getCountryCallingCode());
                 }
             }
 

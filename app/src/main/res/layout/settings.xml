@@ -14,11 +14,15 @@
         <TextView
             android:id="@+id/accounts_settings_list_header"
             style="@style/settings_category_font"
-            android:text="@string/pref_sipaccounts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:text="@string/pref_sipaccounts"
+            android:textColor="#17355A"
+            android:textColorHighlight="#2196F3"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#3F51B5" />
 
         <LinearLayout
             android:id="@+id/accounts_settings_list"
@@ -28,12 +32,15 @@
 
         <TextView
             style="@style/settings_category_font"
-            android:text="@string/pref_preferences_title"
-            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:paddingTop="15dp"
+            android:text="@string/pref_preferences_title"
+            android:textColor="#17355A"
+            android:textColorHighlight="#2196F3"
+            android:textColorLink="#17355A" />
 
         <org.linphone.settings.widget.BasicSetting
             android:id="@+id/pref_tunnel"

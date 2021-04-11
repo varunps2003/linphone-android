@@ -37,7 +37,6 @@ import org.linphone.LinphoneManager;
 import org.linphone.R;
 import org.linphone.core.Core;
 import org.linphone.core.CoreListenerStub;
-import org.linphone.settings.LinphonePreferences;
 
 public class AboutActivity extends MainActivity {
     private CoreListenerStub mListener;
@@ -72,6 +71,7 @@ public class AboutActivity extends MainActivity {
                                 + " ("
                                 + getString(R.string.linphone_sdk_branch)
                                 + ")"));
+        aboutLiblinphoneVersion.setVisibility(View.GONE);
         // We can't access a library's BuildConfig, so we have to set it as a resource
         aboutVersion.setText(
                 String.format(
@@ -80,6 +80,8 @@ public class AboutActivity extends MainActivity {
                                 + " ("
                                 + org.linphone.BuildConfig.BUILD_TYPE
                                 + ")"));
+
+        aboutVersion.setVisibility(View.GONE);
 
         TextView privacyPolicy = findViewById(R.id.privacy_policy_link);
         privacyPolicy.setOnClickListener(
@@ -106,6 +108,7 @@ public class AboutActivity extends MainActivity {
                         startActivity(browserIntent);
                     }
                 });
+        license.setVisibility(View.GONE);
 
         Button sendLogs = findViewById(R.id.send_log);
         sendLogs.setOnClickListener(
@@ -118,8 +121,7 @@ public class AboutActivity extends MainActivity {
                         }
                     }
                 });
-        sendLogs.setVisibility(
-                LinphonePreferences.instance().isDebugEnabled() ? View.VISIBLE : View.GONE);
+        sendLogs.setVisibility(View.GONE);
 
         Button resetLogs = findViewById(R.id.reset_log);
         resetLogs.setOnClickListener(
@@ -132,8 +134,7 @@ public class AboutActivity extends MainActivity {
                         }
                     }
                 });
-        resetLogs.setVisibility(
-                LinphonePreferences.instance().isDebugEnabled() ? View.VISIBLE : View.GONE);
+        resetLogs.setVisibility(View.GONE);
 
         mListener =
                 new CoreListenerStub() {

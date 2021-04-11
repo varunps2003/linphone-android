@@ -145,7 +145,8 @@
             android:background="@drawable/resizable_assistant_button"
             android:ellipsize="end"
             android:padding="10dp"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            android:textColorLink="#FFFFFF" />
 
         <Button
             android:id="@+id/dialog_delete_button"
@@ -154,7 +155,7 @@
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:background="@drawable/resizable_assistant_button"
-            android:backgroundTint="@color/red_color"
+            android:backgroundTint="@color/crypto_blue"
             android:ellipsize="end"
             android:padding="10dp"
             android:text="@string/delete" />

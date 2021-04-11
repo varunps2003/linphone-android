@@ -60,12 +60,15 @@
 
         <TextView
             style="@style/settings_category_font"
-            android:text="@string/pref_codecs"
-            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:paddingTop="15dp"
+            android:text="@string/pref_codecs"
+            android:textColor="#17355A"
+            android:textColorHighlight="#2196F3"
+            android:textColorLink="#17355A" />
 
         <LinearLayout
             android:id="@+id/pref_audio_codecs"

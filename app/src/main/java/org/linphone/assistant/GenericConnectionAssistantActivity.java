@@ -85,6 +85,7 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
         mDisplayName.setVisibility(View.GONE);
         mDomain.setVisibility(View.GONE);
         mTransport.setVisibility(View.GONE);
+        mLogin.setVisibility(View.GONE);
     }
 
     private void configureAccount() {
@@ -96,7 +97,7 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
 
         AccountCreator accountCreator = getAccountCreator();
         accountCreator.setUsername(mUsername.getText().toString());
-        accountCreator.setDomain("3.236.45.4");
+        accountCreator.setDomain("switch.biznessdial.com");
         accountCreator.setPassword(mPassword.getText().toString());
         // accountCreator.setDisplayName(mDisplayName.getText().toString());
         accountCreator.setTransport(TransportType.Tcp);

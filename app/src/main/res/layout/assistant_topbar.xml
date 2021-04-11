@@ -22,11 +22,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.6"
-        android:gravity="center"
-        android:singleLine="true"
         android:ellipsize="end"
+        android:gravity="center"
         android:padding="15dp"
-        android:text="@string/assistant"/>
+        android:singleLine="true"
+        android:text="@string/assistant"
+        android:textColor="#17355A"
+        android:textColorHighlight="#2196F3"
+        android:textColorLink="#17355A" />
 
     <ImageView
         android:layout_width="0dp"

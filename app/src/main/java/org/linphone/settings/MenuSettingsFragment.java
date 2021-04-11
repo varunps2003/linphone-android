@@ -58,6 +58,11 @@ public class MenuSettingsFragment extends SettingsFragment {
         super.onResume();
 
         updateValues();
+        mTunnel.setVisibility(View.GONE);
+        mChat.setVisibility(View.GONE);
+        mNetwork.setVisibility(View.GONE);
+        mAdvanced.setVisibility(View.GONE);
+        mContact.setVisibility(View.GONE);
     }
 
     private void loadSettings() {
