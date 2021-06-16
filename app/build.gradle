@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 
 static def getPackageName() {
-    return "org.linphone"
+    return "com.bdl.bizdial"
 }
 
 static def firebaseEnabled() {
-    File googleFile = new File('app/google-services.json')
-    return googleFile.exists()
+    //File googleFile = new File('app/google-services.json')
+    //return googleFile.exists()
+    return false;
 }
 
 task getGitVersion() {
@@ -100,7 +101,7 @@ android {
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 4400
+        versionCode 4401
         versionName "${project.version}"
         applicationId getPackageName()
         multiDexEnabled true
