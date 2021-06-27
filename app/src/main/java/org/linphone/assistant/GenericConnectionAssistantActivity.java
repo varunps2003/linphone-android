@@ -54,6 +54,14 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Core core = LinphoneManager.getCore();
+                        // Set a new default proxy config if the current one has been removed
+                        if (core != null /*&& core.getDefaultProxyConfig() == null*/) {
+                            ProxyConfig[] proxyConfigs = core.getProxyConfigList();
+                            for (int i = 0; i < proxyConfigs.length; i++) {
+                                core.removeProxyConfig(proxyConfigs[i]);
+                            }
+                        }
                         configureAccount();
                     }
                 });
@@ -100,7 +108,7 @@ public class GenericConnectionAssistantActivity extends AssistantActivity implem
         accountCreator.setDomain("switch.biznessdial.com");
         accountCreator.setPassword(mPassword.getText().toString());
         // accountCreator.setDisplayName(mDisplayName.getText().toString());
-        accountCreator.setTransport(TransportType.Tcp);
+        accountCreator.setTransport(TransportType.Udp);
 
         /*switch (mTransport.getCheckedRadioButtonId()) {
             case R.id.transport_udp:

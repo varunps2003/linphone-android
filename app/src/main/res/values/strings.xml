@@ -3,7 +3,7 @@
 
     <!-- Custom -->
     <string name="app_name">BizDial</string>
-    <string name="service_name">Linphone Service</string>
+    <string name="service_name">BDL Service</string>
     <string name="addressbook_label">BizDial</string>
     <string name="notification_title">BizDial</string>
     <string name="wait_dialog_text">Starting up</string>
@@ -14,7 +14,7 @@
     <string name="about_liblinphone_version">Linphone Core %s</string>
     <string name="about_liblinphone_sdk_version">Linphone SDK %s</string>
     <string name="about_privacy_policy">Visit our privacy policy</string>
-    <string name="sync_account_name">linphone contacts</string>
+    <string name="sync_account_name">BDL contacts</string>
 
     <!-- Notifications -->
     <string name="notification_reply_label">Reply</string>
@@ -647,7 +647,7 @@
     <string name="content_description_call_options">Call options</string>
     <string name="content_description_audio_route">Audio route</string>
     <string name="content_description_exit_conference">Exit conference</string>
-    <string name="content_title_notification_service">Linphone service notification</string>
+    <string name="content_title_notification_service">BDL service notification</string>
     <string name="content_title_notification">Linphone instant messages notifications</string>
     <string name="content_title_notification_missed_call">Linphone missed calls notifications</string>
     <string name="content_description_conversation_subject">Group chat room subject</string>

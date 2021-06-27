@@ -49,6 +49,7 @@ import java.util.Date;
 import org.linphone.LinphoneContext;
 import org.linphone.LinphoneManager;
 import org.linphone.R;
+import org.linphone.assistant.GenericConnectionAssistantActivity;
 import org.linphone.assistant.PhoneAccountLinkingAssistantActivity;
 import org.linphone.call.CallActivity;
 import org.linphone.call.CallIncomingActivity;
@@ -461,7 +462,19 @@ public abstract class MainActivity extends LinphoneGenericActivity
 
     @Override
     public void onQuitClicked() {
-        quit();
+        // quit();
+
+        /*Core core = LinphoneManager.getCore();
+        // Set a new default proxy config if the current one has been removed
+        if (core != null /*&& core.getDefaultProxyConfig() == null*/
+        /*) {
+            ProxyConfig[] proxyConfigs = core.getProxyConfigList();
+            for (int i = 0; i < proxyConfigs.length; i++) {
+                core.removeProxyConfig(proxyConfigs[i]);
+            }
+        }*/
+
+        startActivity(new Intent(MainActivity.this, GenericConnectionAssistantActivity.class));
     }
 
     @Override
